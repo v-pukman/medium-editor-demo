@@ -15,7 +15,7 @@
     <% @pages.each do |page| %>
       <tr>
         <td><%= page.title %></td>
-        <td><%= page.content %></td>
+        <td><%= page.content.to_s.html_safe %></td>
         <td><%= link_to 'Show', page %></td>
         <td><%= link_to 'Edit', edit_page_path(page) %></td>
         <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -57,3 +57,6 @@ gem 'medium-editor-insert-plugin', path: '../medium-editor-insert-plugin'
 gem 'medium-editor-tables-plugin', path: '../medium-editor-tables-plugin'
 gem 'medium-editor-buttons-plugin', path: '../medium-editor-buttons-plugin'
 gem 'medium-editor-markdown-plugin', path: '../medium-editor-markdown-plugin'
+
+gem 'devise'
+gem 'banken'

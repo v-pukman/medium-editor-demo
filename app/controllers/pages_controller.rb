@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update, :destroy]
 
   # GET /pages
   # GET /pages.json
@@ -10,6 +11,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    @page = Page.find(params[:id])
   end
 
   # GET /pages/new
@@ -24,7 +26,7 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(page_params)
+    @page = current_user.pages.build page_params
 
     respond_to do |format|
       if @page.save
@@ -62,13 +64,14 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def page_params
-      params.require(:page).permit(:title, :content)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def page_params
+    params.require(:page).permit(:title, :content)
+  end
+
+  def authorize
+    @page = Page.find(params[:id])
+    authorize! @page
+  end
 end
