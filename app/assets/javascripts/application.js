@@ -54,12 +54,12 @@ $(document).ready(function(){
     addons: {
       images: {
         fileUploadOptions: {
-          url: '/images/upload',
+          url: '/medium-editor-insert-plugin/images/upload',
           acceptFileTypes: /(.|\/)(gif|jpe?g|png)$/i
         },
 
         fileDeleteOptions: {
-          url: '/images/delete',
+          url: '/medium-editor-insert-plugin/images/delete',
         }
       }
     }
